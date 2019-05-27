@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Temperature(models.Model):
-    dateRead = models.CharField(max_length=255)
+    dateRead = models.CharField(max_length=255, unique=True)
     reading = models.CharField(max_length=255)
 
     def __str__(self):
