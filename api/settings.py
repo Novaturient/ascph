@@ -25,7 +25,7 @@ SECRET_KEY = '$fkci=^@9^o*imuimj$x=d+me+d_0i#^_g+62ih8zq9!sw96j('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.2', '10.0.5.29', '0.0.0.0']
+ALLOWED_HOSTS = ['192.168.1.2', '10.0.5.27', '192.168.0.16', '0.0.0.0']
 
 
 # Application definition
@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'hqARCHIBUS24_1',
+        'NAME': 'archibus24_1_hq_clean',
         'HOST': 'rvaleros\mssql2012',
-        'USERNAME': 'sa',
+        'USERNAME': 'test',
         'PASSWORD': 'archibus',
-        'PORT': '51078',
+        'PORT': '1433',
 
         'OPTIONS': {
             'driver': "ODBC Driver 13 for SQL Server",

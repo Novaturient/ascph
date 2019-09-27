@@ -8,6 +8,10 @@ from .models import Motion
 from .serializers import MotionSerializer
 from .models import Light
 from .serializers import LightSerializer
+from .models import Vibration
+from .serializers import VibrationSerializer
+from .models import Sensor
+from .serializers import SensorSerializer
 from rest_framework.response import Response
 
 
@@ -74,4 +78,50 @@ class LightView(generics.ListCreateAPIView):
         )
         return Response(
             data=LightSerializer(light).data, 
+        )
+
+class VibrationView(generics.ListCreateAPIView):
+    """
+    Provides a get and post method
+    """
+    queryset = Vibration.objects.all()
+    serializer_class = VibrationSerializer
+
+    def post(self,request):
+        vibration = Vibration.objects.create(
+            dateRead=request.data["dateRead"],
+            reading=request.data["reading"]
+        )
+        return Response(
+            data=VibrationSerializer(vibration).data, 
+        )
+
+class SensorView(generics.ListCreateAPIView):
+    """
+    Provides a get and post method
+    """
+    queryset = Sensor.objects.all()
+    serializer_class = SensorSerializer
+
+    def post(self,request):
+        sensor = Sensor.objects.create(
+            DataMessageGUID = request.data["DataMessageGUID"],
+            SensorID = request.data["SensorID"],
+            MessageDate = request.data["MessageDate"],
+            State = request.data["State"],
+            SignalStrength = request.data["SignalStrength"],
+            Voltage = request.data["Voltage"],
+            Battery =  request.data["Battery"],
+            Data = request.data["Data"],
+            DisplayData = request.data["DisplayData"],
+            PlotValue = request.data["PlotValue"],
+            MetNotificationRequirements = request.data["MetNotificationRequirements"],
+            GatewayID = request.data["GatewayID"],
+            DataValues = request.data["DataValues"],
+            DataTypes = request.data["DataTypes"],
+            PlotValues = request.data["PlotValues"],
+            PlotLabels = request.data["PlotLabels"]
+        )
+        return Response(
+            data=SensorSerializer(sensor).data, 
         )
